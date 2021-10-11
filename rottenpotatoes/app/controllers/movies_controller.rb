@@ -31,6 +31,14 @@ class MoviesController < ApplicationController
     redirect_to movie_path(@movie)
   end
 
+  def similar
+    @movie = Movie.find params[:id]
+    @movies = Movie.find_same_director(@movie.id)
+    if @movies.nil?
+      redirect_to root_url
+    end
+  end
+
   def destroy
     @movie = Movie.find(params[:id])
     @movie.destroy

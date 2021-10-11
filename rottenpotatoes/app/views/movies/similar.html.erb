@@ -1,0 +1,15 @@
+<!--  app/views/movies/show.html.erb -->
+<h2>Similar Movies for <em><%= @movie.title %></em></h2>
+
+<ul id="Similar Movies">
+  <% @movies.each do |movie| %>
+  <li>
+    <%= movie.title%>
+  </li>
+  <%end%>
+</ul>
+
+
+<div class="row">
+  <%= link_to 'Back to movie list', movies_path, :class => 'btn btn-primary col-2' %>
+</div>

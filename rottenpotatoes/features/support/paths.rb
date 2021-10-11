@@ -17,12 +17,16 @@ module NavigationHelpers
 
 
     when /^the edit page for "(.*)"/
-      mov = Movie.find_by_title($1)
+      mov = Movie.find_by(title: $1).id
       edit_movie_path(mov)
       
     when /^the details page for "(.*)"/
-      mov = Movie.find_by_title($1)
-      movies_path(mov)
+      mov = Movie.find_by(title: $1).id
+      movie_path(mov)
+      
+    when /^the Similar Movies page for "(.*)"/
+      mov = Movie.find_by(title: $1).id
+      find_movies_with_same_director_path(mov)
       
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
